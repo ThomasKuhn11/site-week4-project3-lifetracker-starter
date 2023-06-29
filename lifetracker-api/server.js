@@ -1,13 +1,17 @@
 const express = require('express')
 
-const app= express()
-const PORT = process.env.SERVER_PORT || 3002
+const authRoutes = require("./routes/auth")
 
-//const app = require("./app")
-//const { PORT } = require("./config")
+//const PORT = process.env.SERVER_PORT || 3002
+
+const app = require("./app")
+const { PORT } = require("./config")
+
+//const app = express()
 
 
 app.use(express.json())
+
 
 
 app.listen(PORT, ()=> {
