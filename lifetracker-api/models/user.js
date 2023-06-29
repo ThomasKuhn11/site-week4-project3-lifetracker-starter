@@ -66,6 +66,7 @@ class User {
    **/
 
   static async register(creds) {
+    //console.log(creds)
     const { username, password, firstName, lastName, email} = creds
     const requiredCreds = ["username", "password", "firstName", "lastName", "email"]
     // try {
@@ -88,17 +89,16 @@ class User {
           password,
           first_name,
           last_name,
-          email,
-                
+          email               
         )
         VALUES ($1, $2, $3, $4, $5)
         RETURNING 
                   username,            
                   first_name AS "firstName", 
                   last_name AS "lastName",
-                  email,             
+                  email             
                   `,
-      [username, password, firstName, lastName, normalizedEmail]
+      [username, hashedPassword, firstName, lastName, normalizedEmail]
     )
 
     const user = result.rows[0]
@@ -119,7 +119,7 @@ class User {
               password,
               first_name AS "firstName",
               last_name AS "lastName",
-              email,           
+              email           
            FROM users
            WHERE email = $1`,
       [email.toLowerCase()]

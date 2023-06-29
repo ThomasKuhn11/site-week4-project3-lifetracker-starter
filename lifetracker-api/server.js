@@ -2,8 +2,6 @@ const express = require('express')
 
 const authRoutes = require("./routes/auth")
 
-//const PORT = process.env.SERVER_PORT || 3002
-
 const app = require("./app")
 const { PORT } = require("./config")
 
@@ -19,4 +17,3 @@ app.listen(PORT, ()=> {
 })
 
 
-//README line 432

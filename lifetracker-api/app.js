@@ -20,7 +20,6 @@ app.use(morgan("tiny"))
 // routes
 app.use("/auth", authRoutes)
 
-// WILL NEED ALL  THSE ON ACTUAL PROJECT //////////////////////////
 
 // health check confirm tha server works
 app.get("/", function (req, res) {
