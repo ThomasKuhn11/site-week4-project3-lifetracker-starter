@@ -1,7 +1,61 @@
 import * as React from "react";
 import "./LoginPage.css";
 
-export default function LoginPage() {
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import axios from "axios";
+
+export default function LoginPage({setAppState}) {
+
+  const navigate = useNavigate()
+  //const [isLoading, setIsLoading] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  })
+
+  const handleOnInputChange = (event) => {
+    if (event.target.name === "email") {
+      if (event.target.value.indexOf("@") === -1) {
+        setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
+      } else {
+        setErrors((e) => ({ ...e, email: null }))
+      }
+    }
+
+    setUser((f) => ({ ...f, [event.target.name]: event.target.value }))
+  }
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault()
+    //setIsLoading(true)
+    setErrors((e) => ({ ...e, user: null }))
+
+    try {
+      const res = await axios.post(`http://localhost:3001/auth/login`, user)
+      if (res?.data) {
+        console.log(  res.data)
+        setAppState(res.data)
+        //setIsLoading(false)
+        navigate("/activityPage")
+      } else {
+        setErrors((e) => ({ ...e, user: "Invalid username/password combination" }))
+        //setIsLoading(false)
+      }
+    } catch (err) {
+      console.log(err)
+      const message = err?.response?.data?.error?.message
+      setErrors((e) => ({ ...e, user: message ? String(message) : String(err) }))
+      //setIsLoading(false)
+    }
+  }
+
+
+
+
+
   return (
 
     <div class="css-9cjjy5">
@@ -10,10 +64,12 @@ export default function LoginPage() {
           
         </span>
         <h2 class="chakra-heading css-3q8efk">Welcome</h2>
+        {Boolean(errors.user) && <span className="error">{errors.user}</span>}
+        
         <div class="css-ebzegt">
-          <form>
+          <user>
             <div class="chakra-stack css-1opnp10">
-              <div role="group" class="chakra-form-control css-1kxonj9">
+              <div role="group" class="chakra-user-control css-1kxonj9">
                 <div class="chakra-input__group css-bx0blc" data-group="true">
                   <div class="chakra-input__left-element css-1cw84h2">
                     <svg
@@ -37,12 +93,13 @@ export default function LoginPage() {
                     required=""
                     aria-required="true"
                     class="chakra-input css-trvw4f"
-                    value=""
+                    value={user.email}
+                    onChange={handleOnInputChange}
 
                   ></input>
                 </div>
               </div>
-              <div role="group" class="chakra-form-control css-1kxonj9">
+              <div role="group" class="chakra-user-control css-1kxonj9">
                 <div class="chakra-input__group css-bx0blc" data-group="true">
                   <div class="chakra-input__left-element css-17ke578">
                     <svg
@@ -66,7 +123,8 @@ export default function LoginPage() {
                     required=""
                     aria-required="true"
                     class="chakra-input css-67vh0"
-                    value=""
+                    value={user.password}
+                    onChange={handleOnInputChange}
 
                   ></input>
                   <div class="chakra-input__right-element css-1qww07b">
@@ -76,11 +134,11 @@ export default function LoginPage() {
                   </div>
                 </div>
               </div>
-              <button type="submit" class="chakra-button css-4lvvxn">
+              <button type="submit" onClick={handleOnSubmit} class="chakra-button css-4lvvxn">
                 Login
               </button>
             </div>
-          </form>
+          </user>
         </div>
       </div>
       <div class="css-0">

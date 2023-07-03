@@ -3,7 +3,7 @@
 const db = require("../db")
 const bcrypt = require("bcrypt")
 const { BadRequestError, UnauthorizedError } = require("../utils/errors")
-//const { validateFields } = require("../utils/validate")
+const { validateFields } = require("../utils/validate")
 
 const { BCRYPT_WORK_FACTOR } = require("../config")
 
@@ -35,27 +35,27 @@ class User {
    * @returns user
    **/
 
-//   static async authenticate(creds) { //we authenticate from the front end
-//     const { email, password } = creds
-//     const requiredCreds = ["email", "password"]
-//     try {
-//       validateFields({ required: requiredCreds, obj: creds, location: "user authentication" })
-//     } catch (err) {
-//       throw err
-//     }
+  static async authenticate(creds) { //we authenticate from the front end
+    const { email, password } = creds
+    const requiredCreds = ["email", "password"]
+    try {
+      validateFields({ required: requiredCreds, obj: creds, location: "user authentication" })
+    } catch (err) {
+      throw err
+    }
 
-//     const user = await User.fetchUserByEmail(email)
+    const user = await User.fetchUserByEmail(email)
 
-//     if (user) {
-//       // compare hashed password to a new hash from password
-//       const isValid = await bcrypt.compare(password, user.password)
-//       if (isValid === true) {
-//         return User._createPublicUser(user)
-//       }
-//     }
+    if (user) {
+      // compare hashed password to a new hash from password
+      const isValid = await bcrypt.compare(password, user.password)
+      if (isValid === true) {
+        return User._createPublicUser(user)
+      }
+    }
 
-//     throw new UnauthorizedError("Invalid username/password")
-//   }
+    throw new UnauthorizedError("Invalid username/password")
+  }
 
   /**
    * Register user with data.
@@ -69,11 +69,11 @@ class User {
     //console.log(creds)
     const { username, password, firstName, lastName, email} = creds
     const requiredCreds = ["username", "password", "firstName", "lastName", "email"]
-    // try {
-    //   validateFields({ required: requiredCreds, obj: creds, location: "user registration" })
-    // } catch (err) {
-    //   throw err
-    // }
+    try {
+      validateFields({ required: requiredCreds, obj: creds, location: "user registration" })
+    } catch (err) {
+      throw err
+    }
 
     const existingUserWithEmail = await User.fetchUserByEmail(email)
     if (existingUserWithEmail) {
