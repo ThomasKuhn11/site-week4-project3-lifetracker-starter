@@ -58,20 +58,17 @@ export default function LoginPage({setAppState}) {
 
   return (
 
-    <div class="css-9cjjy5">
-      <div class="chakra-stack css-15xvz01">
-        <span class="chakra-avatar css-11g7hql">
-          
-        </span>
-        <h2 class="chakra-heading css-3q8efk">Welcome</h2>
+    <div class="loginPage">
+      
+        <h2 class="welcomeMessage">Welcome</h2>
         {Boolean(errors.user) && <span className="error">{errors.user}</span>}
         
-        <div class="css-ebzegt">
+        <div class="userInputs">
           <user>
-            <div class="chakra-stack css-1opnp10">
-              <div role="group" class="chakra-user-control css-1kxonj9">
-                <div class="chakra-input__group css-bx0blc" data-group="true">
-                  <div class="chakra-input__left-element css-1cw84h2">
+            <div class="inputsFrame">
+              <div role="group" class="frame">
+                <div class="bar" data-group="true">
+                  <div class="icon">
                     <svg
                       stroke="currentColor"
                       fill="currentColor"
@@ -99,21 +96,10 @@ export default function LoginPage({setAppState}) {
                   ></input>
                 </div>
               </div>
-              <div role="group" class="chakra-user-control css-1kxonj9">
-                <div class="chakra-input__group css-bx0blc" data-group="true">
-                  <div class="chakra-input__left-element css-17ke578">
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 448 512"
-                      class="css-119zpey"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"></path>
-                    </svg>
+              <div role="group" class="frame">
+                <div class="bar" data-group="true">
+                  <div class="icon">
+         
                   </div>
                   <input
                     name="password"
@@ -140,7 +126,7 @@ export default function LoginPage({setAppState}) {
             </div>
           </user>
         </div>
-      </div>
+      
       <div class="css-0">
         New to us?{" "}
         <a class="chakra-link css-c6nly4" href="/register">

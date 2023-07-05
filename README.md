@@ -429,7 +429,7 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] Create a new file at the root of the project called `db.js`. In that file:
     - [x] Import the `getDatabaseUri` function from the `config.js` file.
     - [x] Initialize a new PostgreSQL client with the `pg` package and connect to PostgreSQL using any necessary config variables.
-    - [ ] Connect to PostgreSQL and log a message to the terminal on success or failure.
+    - [x] Connect to PostgreSQL and log a message to the terminal on success or failure.
     - [ ] Export the connected database client
   - [ ] Commit all work to `git`
   - [ ] A database client is now ready to be used!

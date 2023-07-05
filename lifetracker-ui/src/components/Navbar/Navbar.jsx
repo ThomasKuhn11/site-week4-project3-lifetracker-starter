@@ -1,14 +1,21 @@
 import * as React from "react";
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({appState, setAppState}) {
+  console.log(appState?.user)
+
+  const handleOnLogout = () => {
+    setAppState({})
+    navigate("/")
+  }
+
   return (
       <div class="Navbar css-15bu2in">
         <div class="css-70qvj9">
           <a class="chakra-link css-14rj303" href="/">
             <img src="/assets/codepath-f1b3e41a.svg" alt="logo"></img>
           </a>
-          <a class="chakra-link css-74uit1" href="/activity">
+          <a class="chakra-link css-74uit1" href="/activityPage">
             Activity
           </a>
           <a class="chakra-link css-74uit1" href="/exercise">
@@ -21,18 +28,31 @@ export default function Navbar() {
             Sleep
           </a>
         </div>
-        <div class="css-70qvj9">
-          <a class="chakra-link css-spn4bz" href="/login">
-            <button type="button" class="chakra-button css-1t9i4zo">
-              Sign In
-            </button>
-          </a>
-          <a class="chakra-link css-spn4bz" href="/register">
-            <button type="button" class="chakra-button css-td8gbm">
-              Register
-            </button>
-          </a>
-        </div>
+
+        <nav>
+      <div className="css-70qvj9">
+        { typeof appState.user === 'undefined' ? (
+          <>
+            <a className="chakra-link css-spn4bz" href="/login">
+              <button type="button" className="chakra-button css-1t9i4zo">
+                Sign In
+              </button>
+            </a>
+            <a className="chakra-link css-spn4bz" href="/register">
+              <button type="button" className="chakra-button css-td8gbm">
+                Register
+              </button>
+            </a>
+          </>
+        ) : (
+          <button type="button" onClick={handleOnLogout}>
+            Log Out
+          </button>
+        )}
+      </div>
+    </nav>
+
+
       </div>
   );
 }

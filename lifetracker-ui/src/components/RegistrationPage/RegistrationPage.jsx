@@ -120,16 +120,16 @@ export default function RegistrationPage({setAppState}) {
     <div className="registrationPage">
       <h2 className="createAccountHeader">Create an Account</h2>
       <div className="userInputs">
-        <div className="chakra-stack css-1opnp10">
-          <div className="chakra-form-control css-1kxonj9">
-            <div className="chakra-input__group css-bx0blc" data-group="true">
-              <div className="chakra-input__left-element css-1cw84h2">
+        <div className="inputsFrame">
+          <div className="frame">
+            <div className="bar">
+              <div className="icon">
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
                   strokeWidth="0"
                   viewBox="0 0 512 512"
-                  className="css-119zpey"
+                  className="icon"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
@@ -154,15 +154,15 @@ export default function RegistrationPage({setAppState}) {
               </form>
             </div>
           </div>
-          <div role="group" className="chakra-form-control css-1kxonj9">
-            <div className="chakra-input__group css-bx0blc" data-group="true">
-              <div className="chakra-input__left-element css-1cw84h2">
+          <div role="group" className="frame">
+            <div className="bar" data-group="true">
+              <div className="icon">
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
                   stroke-width="0"
                   viewBox="0 0 512 512"
-                  className="css-119zpey"
+                  className="icon"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,8 +183,8 @@ export default function RegistrationPage({setAppState}) {
               ></input>
             </div>
           </div>
-          <div className="css-9jay18">
-            <div role="group" className="chakra-form-control css-1kxonj9">
+          <div className="frame">
+            <div role="group" className="usernameInput">
               <div className="chakra-input__group css-bx0blc" data-group="true">
                 <input
                   type="text"
@@ -200,8 +200,8 @@ export default function RegistrationPage({setAppState}) {
               </div>
             </div>
             &nbsp;
-            <div role="group" className="chakra-form-control css-1kxonj9">
-              <div className="chakra-input__group css-bx0blc" data-group="true">
+            <div role="group" className="frame">
+              <div className="bar" data-group="true">
                 <input
                   name="lastName"
                   type="text"
@@ -216,21 +216,10 @@ export default function RegistrationPage({setAppState}) {
               </div>
             </div>
           </div>
-          <div role="group" className="chakra-form-control css-1kxonj9">
-            <div className="chakra-input__group css-bx0blc" data-group="true">
+          <div role="group" className="frame">
+            <div className="bar" data-group="true">
               <div className="chakra-input__left-element css-17ke578">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 448 512"
-                  className="css-119zpey"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"></path>
-                </svg>
+         
               </div>
               <div className="inputField">
                 <input
@@ -256,21 +245,10 @@ export default function RegistrationPage({setAppState}) {
               </div>
             </div>
           </div>
-          <div role="group" className="chakra-form-control css-1kxonj9">
-            <div className="chakra-input__group css-bx0blc" data-group="true">
+          <div role="group" className="frame">
+            <div className="bar" data-group="true">
               <div className="chakra-input__left-element css-17ke578">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 448 512"
-                  className="css-119zpey"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"></path>
-                </svg>
+    
               </div>
               <div className="inputField">
                 <input

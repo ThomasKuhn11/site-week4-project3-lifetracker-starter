@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='app'>
 
-      <Navbar/>
+      <Navbar appState={appState} setAppState={setAppState}/>
 
 
       <BrowserRouter>

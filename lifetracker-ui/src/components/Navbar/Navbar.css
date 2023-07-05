@@ -1,5 +1,7 @@
 .Navbar {
   padding-top: 20px;
+  background-color: antiquewhite;
+  width: 100%;
 }
 
 .css-15bu2in {
@@ -61,6 +63,7 @@
 
 .css-1t9i4zo {
   display: inline-flex;
+  padding-right: px;
   appearance: none;
   -webkit-box-align: center;
   align-items: center;
@@ -82,10 +85,8 @@
   font-size: var(--chakra-fontSizes-md);
   padding-inline-start: var(--chakra-space-4);
   padding-inline-end: var(--chakra-space-4);
-  border: 1px solid currentcolor;
-  color: var(--chakra-colors-cyan-600);
-  background: var(--chakra-colors-transparent);
-  margin-right: 20px;
+  background: var(--chakra-colors-cyan-400);
+  color: var(--chakra-colors-black);
 }
 
 .css-td8gbm {
