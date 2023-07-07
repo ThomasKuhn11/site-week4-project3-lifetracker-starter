@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function NutritionPage({ user }) {
   const [errors, setErrors] = useState({});
-  console.log(user)
+  console.log(user?.firstName)
 
   //const isAuthenticated = Boolean(user?.email)
 
@@ -26,7 +26,6 @@ export default function NutritionPage({ user }) {
   const handleAdd = async (event) => {
     event.preventDefault();
 
-    //alert(user)
 
     
    
@@ -35,7 +34,7 @@ export default function NutritionPage({ user }) {
         category: item.category,
         calories: item.calories,
         imageUrl: item.imageUrl,
-        userId: 3
+        userId: user.id
       });
   
       //if (res?.data?.list) {

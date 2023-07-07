@@ -42,7 +42,7 @@ export default function LoginPage({setAppState}) {
 
      //const data = await res.json(); 
      
-     console.log(res.data.token)
+     //console.log(res.data.token)
 
      const token = res.data.token
    
@@ -66,8 +66,6 @@ export default function LoginPage({setAppState}) {
         //setLoggedIn(true)
         //setIsLoading(false)
 
-        //console.log(data.message)
-        //console.log(data.user.username)
 
         //WEB T0KEN WAS GENERATEDNOW CHANGE CODE ACCORDINLY
         //SO THAT USERS ONLY HAVE ACESS WHEN THERE IS A TOKEN

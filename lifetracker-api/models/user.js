@@ -48,17 +48,15 @@ class User {
     }
 
     const user = await User.fetchUserByEmail(email)
+    console.log("email fetched user", user)
 
     if (user) {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(password, user.password)
       if (isValid === true) {
+        const temp = User._createPublicUser(user)
         return User._createPublicUser(user)
       }
-
-    
-      
-
     }
 
     throw new UnauthorizedError("Invalid username/password")
@@ -135,6 +133,7 @@ class User {
   static async fetchUserByEmail(email) {
     const result = await db.query(
       `SELECT
+              id,
               username, 
               password,
               first_name AS "firstName",

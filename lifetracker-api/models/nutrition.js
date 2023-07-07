@@ -56,6 +56,29 @@ class Nutrition {
     
         return item
       }
+
+      static async getAllItems(user) {
+        const query = `
+          SELECT
+            name,
+            category,
+            calories,
+            image_url AS "imageUrl",
+          FROM
+            nutrition
+          WHERE id=$1,
+        `; [user.id]
+    
+        const result = await db.query(query);
+        const items = result.rows.map((item) => this._createItem(item));
+    
+        return items;
+      }
+
+
+
+
+      
 }
 
 module.exports = Nutrition

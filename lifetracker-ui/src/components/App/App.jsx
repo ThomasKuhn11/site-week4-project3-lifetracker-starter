@@ -41,6 +41,12 @@ function App(){
     checkLoggedIn();
   }, [])
 
+  const handleLogout = () => {
+    setAppState({})
+    //navigate("/")
+    localStorage.removeItem("token");
+  }
+
   return (
     <div className='app'>
 

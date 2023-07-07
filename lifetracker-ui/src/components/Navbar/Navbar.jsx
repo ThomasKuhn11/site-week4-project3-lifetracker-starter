@@ -18,7 +18,7 @@ export default function Navbar({appState, setAppState}) {
       <div class="Navbar css-15bu2in">
         <div class="css-70qvj9">
           <a class="chakra-link css-14rj303" href="/">
-            <img src="/assets/codepath-f1b3e41a.svg" alt="logo"></img>
+            🏠
           </a>
           <a class="chakra-link css-74uit1" href="/activityPage">
             Activity
