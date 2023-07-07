@@ -9,6 +9,8 @@ export default function ActivityPage({user, setAppState}) {
     const navigate = useNavigate()
     
     const isAuthenticated = Boolean(user?.email)
+    //change this so it checks if a token exists I guess
+    //maybe use appState to store decoded token
   
     const handleOnLogout = () => {
       setAppState({})

@@ -6,6 +6,9 @@ import axios from "axios";
 
 export default function NutritionPage({ user }) {
   const [errors, setErrors] = useState({});
+  console.log(user)
+
+  //const isAuthenticated = Boolean(user?.email)
 
   const [item, setItem] = useState({
     name: "",
@@ -23,7 +26,7 @@ export default function NutritionPage({ user }) {
   const handleAdd = async (event) => {
     event.preventDefault();
 
-    console.log(item);
+    //alert(user)
 
     
    
@@ -75,38 +78,8 @@ export default function NutritionPage({ user }) {
 
   const isAuthenticated = Boolean(user?.email);
 
-  // const content = isAuthenticated ? (
-  //     <>
-  //           <form className="form-container" >
-  //       <label>
-  //         Name:
-  //         <input type="text" name="name" />
-  //       </label>
-  //       <br />
-  //       <label>
-  //         Category:
-  //         <input type="text" name="category" />
-  //       </label>
-  //       <br />
-  //       <label>
-  //         Calories:
-  //         <input type="number" name="calories" />
-  //       </label>
-  //       <br />
-  //       <label>
-  //         Image URL:
-  //         <input type="text" name="imageUrl" />
-  //       </label>
-  //       <br />
-  //       <button type="submit">Add</button>
-  //     </form>
-  //     </>
-  //   ) : (
-  //     <p className="appt">Please Log In to see your nutrition information!</p>
-  //   )
-
-  return (
-    <div className="NutritionPage">
+  const content = isAuthenticated ? (
+      <>
       <form className="form-container">
         <label>
           Name:
@@ -157,9 +130,14 @@ export default function NutritionPage({ user }) {
       <DisplayList/>
 
       </div>
+      </>
+    ) : (
+      <p className="appt">Please Log In to see your nutrition information!</p>
+    )
 
-      
-      
+  return (
+    <div className="NutritionPage">
+      {content}   
     </div>
   );
 }

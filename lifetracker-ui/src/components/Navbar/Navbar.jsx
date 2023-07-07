@@ -1,12 +1,17 @@
 import * as React from "react";
 import "./Navbar.css";
+//import { useNavigate } from 'react-router-dom';
+
 
 export default function Navbar({appState, setAppState}) {
+  //const navigate = useNavigate();
   console.log(appState?.user)
+
 
   const handleOnLogout = () => {
     setAppState({})
-    navigate("/")
+    //navigate("/")
+    localStorage.removeItem("token");
   }
 
   return (

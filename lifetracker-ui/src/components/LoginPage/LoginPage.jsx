@@ -17,8 +17,8 @@ export default function LoginPage({setAppState}) {
     email: "",
     password: "",
   })
-  const [userName, setUserName] = useState()
-  const [loggedIn, setLoggedIn] = useState(false)
+  //const [userName, setUserName] = useState()
+  //const [loggedIn, setLoggedIn] = useState(false)
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
@@ -39,11 +39,42 @@ export default function LoginPage({setAppState}) {
 
     try {
       const res = await axios.post(`http://localhost:3001/auth/login`, user)
-      if (res?.data) {
-        console.log(  res.data)
-        setAppState(res.data)
-        setLoggedIn(true)
+
+     //const data = await res.json(); 
+     
+     console.log(res.data.token)
+
+     const token = res.data.token
+   
+      if (res?.data) { //should I change this??????
+
+        //console.log(res)
+
+       //get token information and store in local storage
+        //const token = res?.data.token
+        localStorage.setItem("token", token)
+
+         //get username from token //from backend
+         const decodedToken = jwt_decode(token);
+         //setUserName(decodedToken.username)
+
+
+        //setAppState(res.data.user)
+        setAppState(decodedToken)
+        console.log(res.data.user)
+
+        //setLoggedIn(true)
         //setIsLoading(false)
+
+        //console.log(data.message)
+        //console.log(data.user.username)
+
+        //WEB T0KEN WAS GENERATEDNOW CHANGE CODE ACCORDINLY
+        //SO THAT USERS ONLY HAVE ACESS WHEN THERE IS A TOKEN
+        //REMEBER TO ADD USER ID AS A REFERENCE KEY TO THE NUTRITION TABLE
+
+
+
         navigate("/activityPage")
       } else {
         setErrors((e) => ({ ...e, user: "Invalid username/password combination" }))
@@ -59,30 +90,35 @@ export default function LoginPage({setAppState}) {
 
   //TOKEN STUFF this is breakibg everything
 
-  // useEffect(() => {
-  //   const checkLoggedIn = () => {
-  //     const token = localStorage.getItem("token");
-  //     if (token) {
-  //       const decodedToken = jwt_decode(token);
-  //       setUserName(decodedToken.username)
+  useEffect(() => {
+    const checkLoggedIn = () => {
+      //check if the user is logged in when the user first acceses the webpage
+      //alert("hi")
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwt_decode(token);
+        //setUserName(decodedToken.username)
+        setAppState(decodedToken)
         
-  //       if (decodedToken.exp * 1000 > Date.now()) {
-  //         setLoggedIn(true);
-  //       } else {
-  //         //token has expired
-  //         handleLogout();
-  //       }
-  //     }
+        if (decodedToken.exp * 1000 > Date.now()) {
+          //setLoggedIn(true);
+          setAppState(decodedToken)
+        } else {
+          //token has expired
+          handleLogout();
+        }
+      }
 
-  //   }
+    }
 
-  //   checkLoggedIn();
-  // }, [])
+    checkLoggedIn();
+  }, [])
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   setLoggedIn(false);
-  // }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    setAppState({})
+  }
 
 
 
