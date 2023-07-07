@@ -1,8 +1,10 @@
 import * as React from "react";
 import "./LoginPage.css";
 
+import jwt_decode from "jwt-decode";
+
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -15,6 +17,8 @@ export default function LoginPage({setAppState}) {
     email: "",
     password: "",
   })
+  const [userName, setUserName] = useState()
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
@@ -38,6 +42,7 @@ export default function LoginPage({setAppState}) {
       if (res?.data) {
         console.log(  res.data)
         setAppState(res.data)
+        setLoggedIn(true)
         //setIsLoading(false)
         navigate("/activityPage")
       } else {
@@ -51,6 +56,34 @@ export default function LoginPage({setAppState}) {
       //setIsLoading(false)
     }
   }
+
+  //TOKEN STUFF this is breakibg everything
+
+  // useEffect(() => {
+  //   const checkLoggedIn = () => {
+  //     const token = localStorage.getItem("token");
+  //     if (token) {
+  //       const decodedToken = jwt_decode(token);
+  //       setUserName(decodedToken.username)
+        
+  //       if (decodedToken.exp * 1000 > Date.now()) {
+  //         setLoggedIn(true);
+  //       } else {
+  //         //token has expired
+  //         handleLogout();
+  //       }
+  //     }
+
+  //   }
+
+  //   checkLoggedIn();
+  // }, [])
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   setLoggedIn(false);
+  // }
+
 
 
 

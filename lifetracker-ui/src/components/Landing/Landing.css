@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+  }
+  
+  .blurb {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .blurb h1 {
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .blurb p {
+    font-size: 18px;
+    color: #666;
+  }

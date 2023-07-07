@@ -1,24 +1,50 @@
 import { Link, useNavigate } from "react-router-dom"
+import "./ActivityPage.css"
+import { useState } from "react"
+
 
 
 
 export default function ActivityPage({user, setAppState}) {
     const navigate = useNavigate()
+    
     const isAuthenticated = Boolean(user?.email)
   
     const handleOnLogout = () => {
       setAppState({})
       navigate("/")
     }
+
+    const handleGoToNutritionPage = (event) => {
+      navigate("/nutrition")
+      
+
+    }
   
-    const title = isAuthenticated ? "Welcome" : "Please login to see your acrtivities."
+    const title = isAuthenticated ? "" : "Please login to see your acrtivities."
   
     const content = isAuthenticated ? (
       <>
-        <p className="appt">Hella ACTIVITIES</p>
-        <p className="location">
-          Please head to <strong>{user.location}</strong> on that day.
-        </p>
+      <div className="rectangle">
+        <h2>Total Exercise Minutes</h2>
+        <button onClick={() => console.log('Exercise button clicked')}>
+          Go to Exercise Page
+        </button>
+      </div>
+
+      <div className="rectangle">
+        <h2>Average Hours of Sleep</h2>
+        <button onClick={() => console.log('Sleep button clicked')}>
+          Go to Sleep Page
+        </button>
+      </div>
+
+      <div className="rectangle">
+        <h2>Average Daily Calories</h2>
+        <button onClick={() => handleGoToNutritionPage}>
+          Go to Nutrition Page
+        </button>
+      </div>
       </>
     ) : (
       <p className="appt">Thank you!</p>

@@ -16,7 +16,7 @@ CREATE TABLE nutrition (
   name VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
   calories INTEGER NOT NULL,
-  image_url VARCHAR(255) NOT NULL,
+  image_url TEXT NOT NULL,
   user_id INTEGER REFERENCES users(id),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

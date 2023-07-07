@@ -56,30 +56,13 @@ export default function RegistrationPage({setAppState}) {
   };
 
   const handleSubmit = async () => {
-    //setIsLoading(true)
-    //setErrors((e) => ({ ...e, user: null }));
-
-    // if (user.passwordConfirm !== user.password) {
-    //   setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
-    //   //setIsLoading(false)
-    //   //return;
-    // } else {
-    //   setErrors((e) => ({ ...e, passwordConfirm: null }));
-    // }
-
-    // if (user.email.indexOf("@") === -1) {
-    //   setErrors((e) => ({ ...e, email: "Please enter a valid email." }));   
-    // } else {
-    //   setErrors((e) => ({ ...e, email: null }));
-    
-    // }
 
     console.log(errors);
 
     try {
       if (errors.passwordConfirm === null && errors.email === null) {
        
-        const res = await axios.post("http://localhost:3001/auth/register", {
+        const res = await axios.post("http://localhost:3001/auth/nutrition", {
           username: user.username,
           password: user.password,
           firstName: user.firstName,
@@ -90,7 +73,7 @@ export default function RegistrationPage({setAppState}) {
         if (res?.data?.user ) {
             setAppState(res.data)
             //setIsLoading(false)
-            navigate("/login");
+            navigate("/activityPage");
 
         }
         

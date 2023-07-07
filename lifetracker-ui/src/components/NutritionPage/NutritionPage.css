@@ -1,19 +1,73 @@
-.NutritionPage {
-  background: #f7fafc;
-}
-.NutritionPage .nutrition-feed {
+/* CSS code for the form */
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 100%;
-  max-width: 600px;
+  align-items: center;
 }
-.white {
-  color: white;
-}
-.NutritionPage .button {
+
+.form-container label {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
-.NutritionPage .button button {
-  flex: 1;
+
+.form-container input[type="text"],
+.form-container input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
 }
+
+.form-container button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.item-list {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.item h3 {
+  margin-top: 0;
+}
+
+.item p {
+  margin: 0;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+  object-fit: cover;
+  max-height: 200px;
+}
+

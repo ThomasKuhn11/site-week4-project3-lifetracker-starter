@@ -7,6 +7,9 @@ const { validateFields } = require("../utils/validate")
 
 const { BCRYPT_WORK_FACTOR } = require("../config")
 
+const jwt = require("jsonwebtoken")
+const { SECRET_KEY } = require("../config")
+
 class User {
   /**
    * Convert a user from the database into a user object that can be viewed publically.
@@ -52,6 +55,27 @@ class User {
       if (isValid === true) {
         return User._createPublicUser(user)
       }
+
+      // //Generate and sign JWT token 
+      // const token = jwt.sign({ user_id: user.id, username: user.username}, "longRandomString", {
+      //   expiresIn: "1h"});
+
+      //   resizeBy.status(200).json({ 
+
+      //     message: "login successful",
+      //     token: token,
+      //     user: {
+      //       id: user.id,
+      //       email: user.email,
+      //       firstName: user.firstName,
+      //       lastName: user.lastName,
+      //       location: user.location,
+      //       date: user.date,
+      //     },
+      //   });
+
+      
+
     }
 
     throw new UnauthorizedError("Invalid username/password")
@@ -102,6 +126,19 @@ class User {
     )
 
     const user = result.rows[0]
+
+    //  //Generate and sign JWT token 
+    //  console.log(user)
+    //  const token = jwt.sign({ user_id: user.id, username: user.username }, SECRET_KEY, {
+    //   expiresIn: "1h"});
+
+    //   res.status(201).json({ 
+
+    //     message: "register successful",
+    //     token: token,
+    //     user: user,
+    //   });
+
 
     return user
   }

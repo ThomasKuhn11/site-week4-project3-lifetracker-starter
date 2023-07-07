@@ -8,8 +8,13 @@ import { useState } from 'react'
 
 import ActivityPage from '../ActivityPage/ActivityPage'
 
-function App() {
+import NutritionPage from '../NutritionPage/NutritionPage'
+
+
+function App(){ 
   const [appState, setAppState] = useState({})
+
+  //add useEffect here like in token video 
 
   return (
     <div className='app'>
@@ -24,6 +29,7 @@ function App() {
           <Route path="/login" element={<LoginPage setAppState={setAppState}/>} />
           <Route path="/register" element={<RegistrationPage setAppState={setAppState}/>} />
           <Route path="/activityPage" element={<ActivityPage setAppState={setAppState} appState={appState} user={appState?.user}/> }/>
+          <Route path="/nutrition" element={<NutritionPage user={appState?.user}/>} />
         </Routes>
       
       
