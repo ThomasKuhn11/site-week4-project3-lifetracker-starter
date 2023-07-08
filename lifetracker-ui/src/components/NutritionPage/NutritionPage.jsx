@@ -142,7 +142,7 @@ export default function NutritionPage({ user }) {
       <div>
 
       {/* <DisplayList/> */}
-      <NutritionFeed user={user}/>
+      <NutritionFeed user={user} itemList={itemList}/>
 
       </div>
       </>

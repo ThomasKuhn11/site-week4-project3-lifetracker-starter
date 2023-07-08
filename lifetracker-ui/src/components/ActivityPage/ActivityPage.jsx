@@ -5,6 +5,7 @@ import { useState } from "react"
 
 
 
+
 export default function ActivityPage({user, setAppState}) {
     const navigate = useNavigate()
     
@@ -43,7 +44,7 @@ export default function ActivityPage({user, setAppState}) {
 
       <div className="rectangle">
         <h2>Average Daily Calories</h2>
-        <button onClick={() => handleGoToNutritionPage}>
+        <button onClick={handleGoToNutritionPage}>
           Go to Nutrition Page
         </button>
       </div>

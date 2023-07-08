@@ -5,9 +5,9 @@ import axios from "axios";
 
 import "./NutritionFeed.css";
 
-export default function NutritionFeed({ user }) {
+export default function NutritionFeed({ user, itemList }) {
 
-    const [itemList, setItemList] = useState([]) 
+    const [dbItems, setDbItems] = useState([]) 
 
 
     
@@ -21,7 +21,7 @@ export default function NutritionFeed({ user }) {
 
                       console.log(res2)
 
-            setItemList(res2.data.nutri)
+            setDbItems(res2.data.nutri)
             console.log(itemList)
                 
             console.log(res2.data.nutri)
@@ -31,14 +31,14 @@ export default function NutritionFeed({ user }) {
             
             
             
-          }, []);
+          }, [itemList]);
 
 
     
 
     return (
         <div className="item-list">
-        {itemList.map((item, index) => (
+        {dbItems.map((item, index) => (
           <div className="item" key={index}>
             <h3>{item.name}</h3>
             <p>Category: {item.category}</p>
