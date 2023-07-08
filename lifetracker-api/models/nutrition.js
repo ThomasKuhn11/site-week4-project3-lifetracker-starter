@@ -16,7 +16,7 @@ class Nutrition {
           name: item.name,
           category: item.category,
           calories: item.calories,
-          imageUrl: item.calories,
+          imageUrl: item.imageUrl,
           userId: item.userId,
           createdAt: item.createdAt,
         }
@@ -24,7 +24,7 @@ class Nutrition {
 
 
       static async addItem(creds) {
-        console.log(creds)
+        //console.log(creds)
         const { name, category, calories, imageUrl, userId} = creds
         const requiredCreds = ["name", "category", "calories","imageUrl", "userId"]
         try {
@@ -57,25 +57,27 @@ class Nutrition {
         return item
       }
 
-      static async getAllItems(user) {
-        const query = `
-          SELECT
-            name,
-            category,
-            calories,
-            image_url AS "imageUrl",
-          FROM
-            nutrition
-          WHERE id=$1,
-        `; [user.id]
-    
-        const result = await db.query(query);
+      static async getAllItems(id) {
+        //console.log(id)
+
+        const result = await db.query( `SELECT
+          name,
+          category,
+          calories,
+          image_url AS "imageUrl"
+        FROM
+          nutrition
+        WHERE user_id=$1
+      `, [id]
+      );
+          
+        console.log(result.rows)
+
         const items = result.rows.map((item) => this._createItem(item));
+        //console.log(items)
     
         return items;
       }
-
-
 
 
       

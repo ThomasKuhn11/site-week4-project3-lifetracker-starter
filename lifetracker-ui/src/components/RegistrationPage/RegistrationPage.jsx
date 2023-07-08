@@ -62,7 +62,7 @@ export default function RegistrationPage({setAppState}) {
     try {
       if (errors.passwordConfirm === null && errors.email === null) {
        
-        const res = await axios.post("http://localhost:3001/auth/nutrition", {
+        const res = await axios.post("http://localhost:3001/auth/register", {
           username: user.username,
           password: user.password,
           firstName: user.firstName,
@@ -73,7 +73,7 @@ export default function RegistrationPage({setAppState}) {
         if (res?.data?.user ) {
             setAppState(res.data)
             //setIsLoading(false)
-            navigate("/activityPage");
+            navigate("/login");
 
         }
         

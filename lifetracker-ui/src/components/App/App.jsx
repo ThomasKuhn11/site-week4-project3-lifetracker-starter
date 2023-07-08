@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import ActivityPage from '../ActivityPage/ActivityPage'
 
 import NutritionPage from '../NutritionPage/NutritionPage'
+import NutritionFeed from '../NutritionFeed/NutritionFeed';
 import jwt_decode from "jwt-decode";
 
 
@@ -61,6 +62,7 @@ function App(){
           <Route path="/register" element={<RegistrationPage setAppState={setAppState}/>} />
           <Route path="/activityPage" element={<ActivityPage setAppState={setAppState} appState={appState} user={appState?.user}/> }/>
           <Route path="/nutrition" element={<NutritionPage user={appState?.user}/>} />
+          <Route path="/nutritionFeed" element={<NutritionFeed/>} />
         </Routes>
       
       

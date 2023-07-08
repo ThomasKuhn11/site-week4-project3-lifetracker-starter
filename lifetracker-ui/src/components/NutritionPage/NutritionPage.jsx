@@ -4,6 +4,8 @@ import "./NutritionPage.css";
 
 import axios from "axios";
 
+import NutritionFeed from "../NutritionFeed/NutritionFeed";
+
 export default function NutritionPage({ user }) {
   const [errors, setErrors] = useState({});
   console.log(user?.firstName)
@@ -27,7 +29,6 @@ export default function NutritionPage({ user }) {
     event.preventDefault();
 
 
-    
    
       const res = await axios.post("http://localhost:3001/auth/nutrition", {
         name: item.name,
@@ -36,6 +37,16 @@ export default function NutritionPage({ user }) {
         imageUrl: item.imageUrl,
         userId: user.id
       });
+
+      
+
+      //from NutritionFeed
+      const res2 = await axios.post("http://localhost:3001/auth/nutritionFeed", 
+    {userId: user.id}
+      );
+
+      console.log(res2.data.nutri)
+
   
       //if (res?.data?.list) {
         //check this
@@ -54,6 +65,10 @@ export default function NutritionPage({ user }) {
      // }
 
   }
+
+  //make a fucntion getAllItems
+  //have a axious.get that gets all items from database
+  //inside of it make a map that displays all of them
 
 
   const DisplayList = () => {
@@ -126,7 +141,8 @@ export default function NutritionPage({ user }) {
       </form>
       <div>
 
-      <DisplayList/>
+      {/* <DisplayList/> */}
+      <NutritionFeed user={user}/>
 
       </div>
       </>

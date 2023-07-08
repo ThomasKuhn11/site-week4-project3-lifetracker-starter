@@ -47,7 +47,7 @@ router.post("/register", async function (req, res, next) {
 
 router.post("/nutrition", async function (req, res, next) {
   try {
-    console.log("post nutrition", req.body);
+    //console.log("post nutrition", req.body);
     const nutri = await Nutrition.addItem(req.body);
     return res.status(201).json({ nutri });
   } catch (err) {
@@ -56,10 +56,12 @@ router.post("/nutrition", async function (req, res, next) {
 });
 
 //new router.get that will call getAllItems
-router.get("/nutrition", async function (req, res, next) {
+router.post("/nutritionFeed", async function (req, res, next) {
   try {
     console.log("get all nutrition", req.body);
-    const nutri = await Nutrition.getAllItems(req.body);
+
+    const nutri = await Nutrition.getAllItems(req.body.userId);
+    //console.log(nutri)
     return res.status(201).json({ nutri });
   } catch (err) {
     next(err);
@@ -70,6 +72,6 @@ router.get("/nutrition", async function (req, res, next) {
 //make new route nutrution feed
 //need to filter by id on sql command 
 //need to send the id along with the get request
-//need an useEffect to call it inside nutritionFeed
+//need an useEffect to call it inside nutritionFeed  
 
 module.exports = router;
