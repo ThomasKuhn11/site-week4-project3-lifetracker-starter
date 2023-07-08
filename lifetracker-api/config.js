@@ -22,7 +22,7 @@ function getDatabaseUri() {
   const dbProdName = process.env.DATABASE_NAME || "lifetrackerdb"
   const dbName = dbProdName
 
-  return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
+  return "postgres://life_tracker_database_rdwj_user:ZKA8musDp4HDzg8Blc4mEu9uHX3Y08Tl@dpg-cikche5gkuvinfijmel0-a/life_tracker_database_rdwj"
 }
 
 
